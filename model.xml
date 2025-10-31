@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='utf-8'?>
+<model>
+  <materials>
+    <material depletable="true" id="1" name="Uranium(0.3333333333333333)-Oxygen(0.6666666666666666)">
+      <density units="g/cm3" value="10.0"/>
+      <nuclide ao="0.03371662557460136" name="U235"/>
+      <nuclide ao="0.2996167077587319" name="U238"/>
+      <nuclide ao="0.6650804000000001" name="O16"/>
+      <nuclide ao="0.0002526666666666667" name="O17"/>
+      <nuclide ao="0.0013336000000000003" name="O18"/>
+    </material>
+    <material id="2" name="Lead-208" temperature="900">
+      <density units="g/cm3" value="10.0"/>
+      <nuclide ao="1" name="Pb208"/>
+    </material>
+    <material id="3" name="Fe-56" temperature="900">
+      <density units="g/cm3" value="8.0"/>
+      <nuclide ao="1" name="Fe56"/>
+    </material>
+    <material id="4" name="Central Void" temperature="900">
+      <density units="g/cm3" value="0.1"/>
+      <nuclide ao="0.9976206" name="O16"/>
+      <nuclide ao="0.000379" name="O17"/>
+      <nuclide ao="0.0020004" name="O18"/>
+    </material>
+    <material depletable="true" id="5" name="Uranium(0.3333333333333333)-Oxygen(0.6666666666666666)(0.4081632653061224)-Lead-208(0.5102040816326531)-Fe-56(0.08163265306122448)" temperature="900">
+      <density units="g/cm3" value="9.8"/>
+      <nuclide ao="0.018108578152190937" name="U235"/>
+      <nuclide ao="0.16091861138791605" name="U238"/>
+      <nuclide ao="0.35720242449063067" name="O16"/>
+      <nuclide ao="0.00013570260967140117" name="O17"/>
+      <nuclide ao="0.0007162519799120605" name="O18"/>
+      <nuclide ao="0.29024733059733154" name="Pb208"/>
+      <nuclide ao="0.17267110078234724" name="Fe56"/>
+    </material>
+  </materials>
+  <geometry>
+    <cell id="1" material="void" name="Central Hole (currently Void)" region="-1 -2 3" universe="1"/>
+    <cell id="2" material="5" name="bulkFuel" region="1 -4 -2 3" universe="1"/>
+    <cell id="3" material="void" name="void" region="5 -6 7 -8 ~(1 -4 -2 3) ~(-1 -2 3)" universe="1"/>
+    <surface coeffs="0.0 0.0 15.0" id="1" type="z-cylinder"/>
+    <surface boundary="vacuum" coeffs="120.542" id="2" type="z-plane"/>
+    <surface boundary="vacuum" coeffs="-120.542" id="3" type="z-plane"/>
+    <surface boundary="vacuum" coeffs="0.0 0.0 180.813" id="4" type="z-cylinder"/>
+    <surface boundary="vacuum" coeffs="-1000.0" id="5" name="minimum x" type="x-plane"/>
+    <surface boundary="vacuum" coeffs="1000.0" id="6" name="maximum x" type="x-plane"/>
+    <surface boundary="vacuum" coeffs="-1000.0" id="7" name="minimum y" type="y-plane"/>
+    <surface boundary="vacuum" coeffs="1000.0" id="8" name="maximum y" type="y-plane"/>
+  </geometry>
+  <settings>
+    <run_mode>fixed source</run_mode>
+    <particles>10000</particles>
+    <batches>100</batches>
+    <source particle="neutron" strength="1.0" type="independent">
+      <space origin="0.0 0.0 0.0" type="cylindrical">
+        <r parameters="-5 5" type="uniform"/>
+        <phi parameters="0 6.283185307179586" type="uniform"/>
+        <z interpolation="linear-linear" type="tabular">
+          <parameters>5.0 2.5 0.0 -2.5 -5.0 100.0 10.0 1.0 0.1 0.01</parameters>
+        </z>
+      </space>
+      <energy interpolation="linear-linear" type="tabular">
+        <parameters>1000000.0 2000000.0 3000000.0 4000000.0 5000000.0 10000000.0 20000000.0 100000000.0 500000000.0 200000.0 150000.0 100000.0 50000.0 50000.0 10000.0 9000.0 3000.0 200.0</parameters>
+      </energy>
+    </source>
+    <temperature_method>interpolation</temperature_method>
+    <create_fission_neutrons>true</create_fission_neutrons>
+  </settings>
+  <tallies>
+    <filter id="1" type="cell">
+      <bins>2</bins>
+    </filter>
+    <filter id="2" type="surface">
+      <bins>1</bins>
+    </filter>
+    <filter id="3" type="surface">
+      <bins>3</bins>
+    </filter>
+    <filter id="4" type="surface">
+      <bins>2</bins>
+    </filter>
+    <filter id="5" type="surface">
+      <bins>4</bins>
+    </filter>
+    <tally id="1">
+      <filters>1</filters>
+      <scores>nu-fission scatter total fission absorption</scores>
+    </tally>
+    <tally id="3">
+      <filters>2</filters>
+      <scores>current</scores>
+    </tally>
+    <tally id="4">
+      <filters>3</filters>
+      <scores>current</scores>
+    </tally>
+    <tally id="5">
+      <filters>4</filters>
+      <scores>current</scores>
+    </tally>
+    <tally id="6">
+      <filters>5</filters>
+      <scores>current</scores>
+    </tally>
+    <tally id="10">
+      <scores>heating fission absorption scatter (n,2n) (n,3n) total</scores>
+    </tally>
+  </tallies>
+</model>

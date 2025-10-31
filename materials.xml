@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<materials>
+  <material depletable="true" id="1" name="Uranium(0.3333333333333333)-Oxygen(0.6666666666666666)">
+    <density units="g/cm3" value="10.0"/>
+    <nuclide ao="0.03371662557460136" name="U235"/>
+    <nuclide ao="0.2996167077587319" name="U238"/>
+    <nuclide ao="0.6650804000000001" name="O16"/>
+    <nuclide ao="0.0002526666666666667" name="O17"/>
+    <nuclide ao="0.0013336000000000003" name="O18"/>
+  </material>
+  <material id="2" name="Lead-208" temperature="900">
+    <density units="g/cm3" value="10.0"/>
+    <nuclide ao="1" name="Pb208"/>
+  </material>
+  <material id="3" name="Fe-56" temperature="900">
+    <density units="g/cm3" value="8.0"/>
+    <nuclide ao="1" name="Fe56"/>
+  </material>
+  <material id="4" name="Central Void" temperature="900">
+    <density units="g/cm3" value="0.1"/>
+    <nuclide ao="0.9976206" name="O16"/>
+    <nuclide ao="0.000379" name="O17"/>
+    <nuclide ao="0.0020004" name="O18"/>
+  </material>
+  <material depletable="true" id="5" name="Uranium(0.3333333333333333)-Oxygen(0.6666666666666666)(0.4081632653061224)-Lead-208(0.5102040816326531)-Fe-56(0.08163265306122448)" temperature="900">
+    <density units="g/cm3" value="9.8"/>
+    <nuclide ao="0.018108578152190937" name="U235"/>
+    <nuclide ao="0.16091861138791605" name="U238"/>
+    <nuclide ao="0.35720242449063067" name="O16"/>
+    <nuclide ao="0.00013570260967140117" name="O17"/>
+    <nuclide ao="0.0007162519799120605" name="O18"/>
+    <nuclide ao="0.29024733059733154" name="Pb208"/>
+    <nuclide ao="0.17267110078234724" name="Fe56"/>
+  </material>
+</materials>

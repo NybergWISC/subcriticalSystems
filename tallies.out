@@ -1,0 +1,126 @@
+ ============================>     TALLY 1     <============================
+
+ Cell 2
+   Li6
+     Nu-Fission Rate                      0 +/- 0
+     Scattering Rate                      0 +/- 0
+     Total Reaction Rate                  0 +/- 0
+     Fission Rate                         0 +/- 0
+     Absorption Rate                      0 +/- 0
+   Li7
+     Nu-Fission Rate                      0 +/- 0
+     Scattering Rate                      0 +/- 0
+     Total Reaction Rate                  0 +/- 0
+     Fission Rate                         0 +/- 0
+     Absorption Rate                      0 +/- 0
+   K39
+     Nu-Fission Rate                      0 +/- 0
+     Scattering Rate                      0 +/- 0
+     Total Reaction Rate                  0 +/- 0
+     Fission Rate                         0 +/- 0
+     Absorption Rate                      0 +/- 0
+   K41
+     Nu-Fission Rate                      0 +/- 0
+     Scattering Rate                      0 +/- 0
+     Total Reaction Rate                  0 +/- 0
+     Fission Rate                         0 +/- 0
+     Absorption Rate                      0 +/- 0
+   Cl35
+     Nu-Fission Rate                      0 +/- 0
+     Scattering Rate                      0 +/- 0
+     Total Reaction Rate                  0 +/- 0
+     Fission Rate                         0 +/- 0
+     Absorption Rate                      0 +/- 0
+   Cl37
+     Nu-Fission Rate                      0 +/- 0
+     Scattering Rate                      0 +/- 0
+     Total Reaction Rate                  0 +/- 0
+     Fission Rate                         0 +/- 0
+     Absorption Rate                      0 +/- 0
+   Am241
+     Nu-Fission Rate                      0 +/- 0
+     Scattering Rate                      0 +/- 0
+     Total Reaction Rate                  0 +/- 0
+     Fission Rate                         0 +/- 0
+     Absorption Rate                      0 +/- 0
+   Np237
+     Nu-Fission Rate                      0 +/- 0
+     Scattering Rate                      0 +/- 0
+     Total Reaction Rate                  0 +/- 0
+     Fission Rate                         0 +/- 0
+     Absorption Rate                      0 +/- 0
+   Am242
+     Nu-Fission Rate                      0 +/- 0
+     Scattering Rate                      0 +/- 0
+     Total Reaction Rate                  0 +/- 0
+     Fission Rate                         0 +/- 0
+     Absorption Rate                      0 +/- 0
+   Am243
+     Nu-Fission Rate                      0 +/- 0
+     Scattering Rate                      0 +/- 0
+     Total Reaction Rate                  0 +/- 0
+     Fission Rate                         0 +/- 0
+     Absorption Rate                      0 +/- 0
+   Cm243
+     Nu-Fission Rate                      0 +/- 0
+     Scattering Rate                      0 +/- 0
+     Total Reaction Rate                  0 +/- 0
+     Fission Rate                         0 +/- 0
+     Absorption Rate                      0 +/- 0
+   Cm244
+     Nu-Fission Rate                      0 +/- 0
+     Scattering Rate                      0 +/- 0
+     Total Reaction Rate                  0 +/- 0
+     Fission Rate                         0 +/- 0
+     Absorption Rate                      0 +/- 0
+   Cm245
+     Nu-Fission Rate                      0 +/- 0
+     Scattering Rate                      0 +/- 0
+     Total Reaction Rate                  0 +/- 0
+     Fission Rate                         0 +/- 0
+     Absorption Rate                      0 +/- 0
+   Cm246
+     Nu-Fission Rate                      0 +/- 0
+     Scattering Rate                      0 +/- 0
+     Total Reaction Rate                  0 +/- 0
+     Fission Rate                         0 +/- 0
+     Absorption Rate                      0 +/- 0
+ ============================>     TALLY 2     <============================
+
+ Cell 2
+   Total Material
+     heating                              6.97222e+07 +/- 45182.8
+     Fission Rate                         0.39222 +/- 0.000256127
+     Absorption Rate                      0.943196 +/- 0.000729732
+     Scattering Rate                      65.5721 +/- 0.0389666
+     (n,Xt)                               5.92854e-09 +/- 3.34581e-09
+ ============================>     TALLY 3     <============================
+
+ Surface 1
+   Total Material
+     Current                              -0.00124333 +/- 3.04686e-05
+ ============================>     TALLY 4     <============================
+
+ Surface 3
+   Total Material
+     Current                              -0.0141753 +/- 0.000129832
+ ============================>     TALLY 5     <============================
+
+ Surface 2
+   Total Material
+     Current                              0.0144153 +/- 0.000128703
+ ============================>     TALLY 6     <============================
+
+ Surface 4
+   Total Material
+     Current                              0.0295967 +/- 0.000156106
+ ===========================>     TALLY 10     <============================
+
+ Total Material
+   heating                              6.97222e+07 +/- 45182.8
+   Fission Rate                         0.39222 +/- 0.000256127
+   Absorption Rate                      0.943196 +/- 0.000729732
+   Scattering Rate                      65.5721 +/- 0.0389666
+   (n,2n)                               0.00221026 +/- 2.60476e-05
+   (n,3n)                               8.57606e-06 +/- 8.60326e-07
+   Total Reaction Rate                  66.5153 +/- 0.0396318

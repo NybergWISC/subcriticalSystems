@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<settings>
+  <run_mode>fixed source</run_mode>
+  <particles>10000</particles>
+  <batches>100</batches>
+  <source particle="neutron" strength="1.0" type="independent">
+    <space origin="0.0 0.0 0.0" type="cylindrical">
+      <r parameters="-5 5" type="uniform"/>
+      <phi parameters="0 6.283185307179586" type="uniform"/>
+      <z interpolation="linear-linear" type="tabular">
+        <parameters>5.0 2.5 0.0 -2.5 -5.0 100.0 10.0 1.0 0.1 0.01</parameters>
+      </z>
+    </space>
+    <energy interpolation="linear-linear" type="tabular">
+      <parameters>1000000.0 2000000.0 3000000.0 4000000.0 5000000.0 10000000.0 20000000.0 100000000.0 500000000.0 200000.0 150000.0 100000.0 50000.0 50000.0 10000.0 9000.0 3000.0 200.0</parameters>
+    </energy>
+  </source>
+  <temperature_method>interpolation</temperature_method>
+  <create_fission_neutrons>true</create_fission_neutrons>
+</settings>
