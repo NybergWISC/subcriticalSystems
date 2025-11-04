@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='utf-8'?>
+<model>
+  <materials>
+    <material depletable="true" id="1" name="Uranium(0.3333333333333333)-Oxygen(0.6666666666666666)">
+      <density units="g/cm3" value="10.0"/>
+      <nuclide ao="0.03371662557460136" name="U235"/>
+      <nuclide ao="0.2996167077587319" name="U238"/>
+      <nuclide ao="0.6650804000000001" name="O16"/>
+      <nuclide ao="0.0002526666666666667" name="O17"/>
+      <nuclide ao="0.0013336000000000003" name="O18"/>
+    </material>
+    <material id="2" name="Lead-208" temperature="900">
+      <density units="g/cm3" value="10.0"/>
+      <nuclide ao="1" name="Pb208"/>
+    </material>
+    <material id="3" name="Fe-56" temperature="900">
+      <density units="g/cm3" value="8.0"/>
+      <nuclide ao="1" name="Fe56"/>
+    </material>
+    <material id="4" name="Central Void" temperature="900">
+      <density units="g/cm3" value="0.1"/>
+      <nuclide ao="0.9976206" name="O16"/>
+      <nuclide ao="0.000379" name="O17"/>
+      <nuclide ao="0.0020004" name="O18"/>
+    </material>
+    <material depletable="true" id="5" name="Uranium(0.3333333333333333)-Oxygen(0.6666666666666666)(0.4081632653061224)-Lead-208(0.5102040816326531)-Fe-56(0.08163265306122448)" temperature="900">
+      <density units="g/cm3" value="9.8"/>
+      <nuclide ao="0.018108578152190937" name="U235"/>
+      <nuclide ao="0.16091861138791605" name="U238"/>
+      <nuclide ao="0.35720242449063067" name="O16"/>
+      <nuclide ao="0.00013570260967140117" name="O17"/>
+      <nuclide ao="0.0007162519799120605" name="O18"/>
+      <nuclide ao="0.29024733059733154" name="Pb208"/>
+      <nuclide ao="0.17267110078234724" name="Fe56"/>
+    </material>
+  </materials>
+  <geometry>
+    <cell id="1" material="void" name="Central Hole (currently Void)" region="-1 -2 3" universe="1"/>
+    <cell id="2" material="5" name="bulkFuel" region="1 -4 -2 3" universe="1"/>
+    <cell id="3" material="void" name="void" region="5 -6 7 -8 ~(1 -4 -2 3) ~(-1 -2 3)" universe="1"/>
+    <surface coeffs="0.0 0.0 15.0" id="1" type="z-cylinder"/>
+    <surface boundary="vacuum" coeffs="120.542" id="2" type="z-plane"/>
+    <surface boundary="vacuum" coeffs="-120.542" id="3" type="z-plane"/>
+    <surface boundary="vacuum" coeffs="0.0 0.0 180.813" id="4" type="z-cylinder"/>
+    <surface boundary="vacuum" coeffs="-1000.0" id="5" name="minimum x" type="x-plane"/>
+    <surface boundary="vacuum" coeffs="1000.0" id="6" name="maximum x" type="x-plane"/>
+    <surface boundary="vacuum" coeffs="-1000.0" id="7" name="minimum y" type="y-plane"/>
+    <surface boundary="vacuum" coeffs="1000.0" id="8" name="maximum y" type="y-plane"/>
+  </geometry>
+  <settings>
+    <run_mode>fixed source</run_mode>
+    <particles>10000</particles>
+    <batches>100</batches>
+    <source particle="neutron" strength="1.0" type="independent">
+      <space origin="0.0 0.0 0.0" type="cylindrical">
+        <r parameters="-5 5" type="uniform"/>
+        <phi parameters="0 6.283185307179586" type="uniform"/>
+        <z interpolation="linear-linear" type="tabular">
+          <parameters>5.0 2.5 0.0 -2.5 -5.0 100.0 10.0 1.0 0.1 0.01</parameters>
+        </z>
+      </space>
+      <energy interpolation="linear-linear" type="tabular">
+        <parameters>1000000.0 2000000.0 3000000.0 4000000.0 5000000.0 10000000.0 20000000.0 100000000.0 500000000.0 200000.0 150000.0 100000.0 50000.0 50000.0 10000.0 9000.0 3000.0 200.0</parameters>
+      </energy>
+    </source>
+    <temperature_method>interpolation</temperature_method>
+    <create_fission_neutrons>true</create_fission_neutrons>
+  </settings>
+  <tallies>
+    <!--Full fuel mesh-->
+    <mesh id="1" type="cylindrical">
+      <r_grid>0.0 1.8081299999999998 3.6162599999999996 5.42439 7.232519999999999 9.04065 10.84878 12.656909999999998 14.465039999999998 16.27317 18.0813 19.889429999999997 21.69756 23.50569 25.313819999999996 27.12195 28.930079999999997 30.73821 32.54634 34.35447 36.1626 37.970729999999996 39.778859999999995 41.58698999999999 43.39512 45.20325 47.01138 48.81951 50.62763999999999 52.43576999999999 54.2439 56.052029999999995 57.86015999999999 59.66829 61.47642 63.284549999999996 65.09268 66.90080999999999 68.70894 70.51706999999999 72.3252 74.13333 75.94145999999999 77.74959 79.55771999999999 81.36585 83.17397999999999 84.98210999999999 86.79024 88.59836999999999 90.4065 92.21463 94.02276 95.83089 97.63902 99.44715000000001 101.25527999999998 103.06340999999999 104.87153999999998 106.67966999999999 108.4878 110.29592999999998 112.10405999999999 113.91219 115.72031999999999 117.52844999999999 119.33658 121.14470999999999 122.95284 124.76097 126.56909999999999 128.37723 130.18536 131.99348999999998 133.80161999999999 135.60975 137.41788 139.22600999999997 141.03413999999998 142.84226999999998 144.6504 146.45853 148.26666 150.07479 151.88291999999998 153.69105 155.49918 157.30731 159.11543999999998 160.92356999999998 162.7317 164.53983 166.34795999999997 168.15609 169.96421999999998 171.77235000000002 173.58048 175.38860999999997 177.19673999999998 179.00486999999998 180.813</r_grid>
+      <phi_grid>0.0 6.283185307179586</phi_grid>
+      <z_grid>-120.542 -118.13116000000001 -115.72032 -113.30948000000001 -110.89864 -108.4878 -106.07696 -103.66612 -101.25528 -98.84444 -96.4336 -94.02276 -91.61192 -89.20108 -86.79024000000001 -84.3794 -81.96856 -79.55772 -77.14688000000001 -74.73604 -72.3252 -69.91436 -67.50352000000001 -65.09268 -62.68184000000001 -60.271 -57.86016 -55.44932 -53.03848000000001 -50.62764 -48.21679999999999 -45.80596 -43.395120000000006 -40.98428 -38.573440000000005 -36.1626 -33.751760000000004 -31.340919999999997 -28.93007999999999 -26.519239999999996 -24.10839999999999 -21.69756000000001 -19.286720000000003 -16.875879999999995 -14.465040000000002 -12.054199999999994 -9.643360000000001 -7.232519999999994 -4.821680000000015 -2.4108400000000074 0.0 2.410839999999993 4.821680000000001 7.232519999999994 9.643360000000001 12.054200000000009 14.465039999999988 16.875879999999995 19.286720000000003 21.69756000000001 24.108400000000017 26.519239999999996 28.930080000000004 31.340919999999983 33.75175999999999 36.1626 38.573440000000005 40.98428000000001 43.39511999999999 45.80595999999997 48.216800000000006 50.627639999999985 53.03847999999999 55.44932 57.86016000000001 60.27099999999999 62.68184000000002 65.09268 67.50352000000001 69.91435999999999 72.32520000000002 74.73604 77.14687999999998 79.55772000000002 81.96856 84.3794 86.79024000000001 89.20108000000002 91.61192 94.02275999999998 96.43360000000001 98.84443999999999 101.25528 103.66612 106.07696000000001 108.4878 110.89863999999997 113.30948000000001 115.72031999999999 118.13116 120.542</z_grid>
+      <origin>0.0 0.0 0.0</origin>
+    </mesh>
+    <filter id="1" type="cell">
+      <bins>2</bins>
+    </filter>
+    <filter id="2" type="surface">
+      <bins>1</bins>
+    </filter>
+    <filter id="3" type="surface">
+      <bins>3</bins>
+    </filter>
+    <filter id="4" type="surface">
+      <bins>2</bins>
+    </filter>
+    <filter id="5" type="surface">
+      <bins>4</bins>
+    </filter>
+    <filter id="6" type="mesh">
+      <bins>1</bins>
+    </filter>
+    <tally id="1">
+      <filters>1</filters>
+      <scores>nu-fission scatter total fission absorption</scores>
+    </tally>
+    <tally id="3">
+      <filters>2</filters>
+      <scores>current</scores>
+    </tally>
+    <tally id="4">
+      <filters>3</filters>
+      <scores>current</scores>
+    </tally>
+    <tally id="5">
+      <filters>4</filters>
+      <scores>current</scores>
+    </tally>
+    <tally id="6">
+      <filters>5</filters>
+      <scores>current</scores>
+    </tally>
+    <tally id="10">
+      <scores>heating fission absorption scatter (n,2n) (n,3n) total</scores>
+    </tally>
+    <tally id="30">
+      <filters>6</filters>
+      <scores>flux heating fission (n,2n)</scores>
+    </tally>
+  </tallies>
+</model>

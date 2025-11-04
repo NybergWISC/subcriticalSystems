@@ -47,7 +47,7 @@ homogenized_mat.temperature = 900
 # Add materials
 all_mats = openmc.Materials()
 all_mats += [UO2_mat, Pb_mat, Fe_mat, homogenized_mat, center_hole]
-all_mats.export_to_xml()
+# all_mats.export_to_xml()
 
 ###### GEOMETRIES ##########
 
@@ -88,7 +88,7 @@ void.region = void_region
 root_universe = openmc.Universe(cells=(hole_cell, bulkFuel, void))
 geometry = openmc.Geometry()
 geometry.root_universe = root_universe
-geometry.export_to_xml()
+# geometry.export_to_xml()
 
 ###### TALLIES ######
 
@@ -141,16 +141,15 @@ tally_current4.filters = [surface_filter]
 tally_current4.scores = ['current']
 
 tally10 = openmc.Tally(10)
-tally10.scores = ['heating', 'kappa-fission', 'fission', 'absorption', 'scatter', '(n,2n)','(n,3n)', 'total']
+tally10.scores = ['heating', 'fission', 'absorption', 'scatter', '(n,2n)','(n,3n)', 'total']
 
 mesh_tally = openmc.Tally(30)
 mesh_tally.filters = [openmc.MeshFilter(cyl_mesh)]
 mesh_tally.scores = ['flux', 'heating', 'fission', '(n,2n)']
 
 # Export tallies
-tallies = openmc.Tallies([tally1, tally_current1, tally_current2, tally_current3, tally_current4, tally10])
-# tallies = openmc.Tallies([tally1, tally_current1, tally_current2, tally_current3, tally_current4, tally10, mesh_tally])
-tallies.export_to_xml()
+tallies = openmc.Tallies([tally1, tally_current1, tally_current2, tally_current3, tally_current4, tally10, mesh_tally])
+# tallies.export_to_xml()
 
 # Set the source/k-code settings
 settings=openmc.Settings()
@@ -195,7 +194,7 @@ if settings.run_mode == 'eigenvalue':
     settings.inactive = 100
     settings.particles = 10000
 
-settings.export_to_xml()
+# settings.export_to_xml()
 
 #### General Model Holder #### 
 myModel = openmc.Model()
@@ -203,7 +202,79 @@ myModel.materials=all_mats
 myModel.geometry=geometry
 myModel.tallies=tallies
 myModel.settings=settings
-myModel.export_to_model_xml()
+# myModel.export_to_model_xml()
 
-openmc.run()
+# openmc.run()
 
+sp = openmc.StatePoint('statepoint.100.h5')
+tally = sp.get_tally(id=30)
+# flux_mean = tally.mean.reshape(*cyl_mesh.dimension)
+# data = {'flux': flux_mean}
+# tally.write_vtk_mesh('cyl_mesh.vtk', data=data)
+
+flux = tally.get_slice(scores=['flux'])
+
+print(flux.mean)
+
+import matplotlib.pyplot as plt
+
+x_cent, y_cent, z_cent = np.rollaxis(cyl_mesh.centroids, -1)
+# print(cyl_mesh.centroids_cylindrical)
+plt.scatter(x_cent, y_cent, flux.mean)
+plt.show()
+
+### FROM MESH TALLY WORK ###
+
+fig, normAx = plt.subplots()
+# relDiffAx = normAx.twinx()
+normAx.set_xlabel("Radius [cm]")
+normAx.set_ylabel("Normalized Flux [-]")
+
+# TODO radius is currently bins, not cm. May take some work to change x axis size for all the lines. Cylmesh is currently set to radii[3] so 227.5cm
+width = [125, 2.5, 75, 25]
+radii = [width[0], width[0]+width[1], width[0]+width[1]+width[2] , width[0]+width[1]+width[2]+width[3]]
+height = 300
+
+# x_ax_geom = range(0, 100)# *radii[3]
+x_ax_geom = [float(x)*radii[3]/100 for x in range(0, 100)]
+
+# Critical (eigenvalue) run
+scores = ['flux', 'heating', 'fission', '(n,Xt)']
+
+spFS = openmc.StatePoint("./statepoint.100.h5")
+
+flux_heat_fission_mesh = spFS.tallies[1].mean
+
+tally_for_df = spFS.get_tally(id=1)
+df_total = tally_for_df.get_pandas_dataframe(nuclides=False)
+# df_flux = df_total[df_total['score'] == 'flux']
+df_flux_FS = df_total[df_total['score'] == scores[0]]
+mean_FS_R = df_flux_FS['mean'].values
+
+
+df_avg = 0
+df_avg_FS = np.zeros((100,1))
+
+    
+for i in range(1,100):
+    df_avg_FS = df_avg_FS + df_flux_FS[df_flux_FS['1']['z'] == i]['mean'].values.reshape((100,1))
+
+df_norm_FS = (df_avg_FS-np.min(df_avg_FS))/(np.max(df_avg_FS)-np.min(df_avg_FS))
+
+normFS = mean_FS_R/np.max(mean_FS_R)
+
+# rel_difference = df_norm_FS-df_norm_KEFF
+
+# rel_difference_25 = np.zeros([25,1])
+# for i in range(0,25):
+#     for j in range(1,4):
+#         rel_difference_25[i,0] = rel_difference_25[i,0] + rel_difference[4*i+j,0]
+
+# relDiffAx.set_ylabel("Relative Difference Between Flux Distributions")
+
+normAx.plot(x_ax_geom, df_norm_FS, label="$k_{eff}=$")
+# normAx.plot(x_ax_geom, df_norm_FS, label="k_eff="+j)
+# relDiffAx.plot(rel_difference)
+
+# plt.legend(loc='lower right')
+plt.show()

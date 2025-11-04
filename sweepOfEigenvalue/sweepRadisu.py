@@ -141,7 +141,7 @@ tally_current4.filters = [surface_filter]
 tally_current4.scores = ['current']
 
 tally10 = openmc.Tally(10)
-tally10.scores = ['heating', 'kappa-fission', 'fission', 'absorption', 'scatter', '(n,2n)','(n,3n)', 'total']
+tally10.scores = ['heating', 'fission', 'absorption', 'scatter', '(n,2n)','(n,3n)', 'total']
 
 mesh_tally = openmc.Tally(30)
 mesh_tally.filters = [openmc.MeshFilter(cyl_mesh)]
@@ -154,8 +154,8 @@ tallies.export_to_xml()
 
 # Set the source/k-code settings
 settings=openmc.Settings()
-settings.run_mode = 'fixed source'
-# settings.run_mode = 'eigenvalue'
+# settings.run_mode = 'fixed source'
+settings.run_mode = 'eigenvalue'
 settings.temperature = {'method' : 'interpolation'}
 # Set the source type and location
 

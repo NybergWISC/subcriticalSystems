@@ -141,15 +141,14 @@ tally_current4.filters = [surface_filter]
 tally_current4.scores = ['current']
 
 tally10 = openmc.Tally(10)
-tally10.scores = ['heating', 'kappa-fission', 'fission', 'absorption', 'scatter', '(n,2n)','(n,3n)', 'total']
+tally10.scores = ['heating', 'fission', 'absorption', 'scatter', '(n,2n)','(n,3n)', 'total']
 
 mesh_tally = openmc.Tally(30)
 mesh_tally.filters = [openmc.MeshFilter(cyl_mesh)]
 mesh_tally.scores = ['flux', 'heating', 'fission', '(n,2n)']
 
 # Export tallies
-tallies = openmc.Tallies([tally1, tally_current1, tally_current2, tally_current3, tally_current4, tally10])
-# tallies = openmc.Tallies([tally1, tally_current1, tally_current2, tally_current3, tally_current4, tally10, mesh_tally])
+tallies = openmc.Tallies([tally1, tally_current1, tally_current2, tally_current3, tally_current4, tally10, mesh_tally])
 tallies.export_to_xml()
 
 # Set the source/k-code settings

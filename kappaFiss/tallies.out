@@ -31,6 +31,7 @@
 
  Total Material
    heating                              2.46598e+09 +/- 1.04261e+07
+   Kappa-Fission Rate                   2.69098e+09 +/- 1.13773e+07
    Fission Rate                         13.866 +/- 0.0586287
    Absorption Rate                      33.2046 +/- 0.140901
    Scattering Rate                      2310.93 +/- 9.76665
