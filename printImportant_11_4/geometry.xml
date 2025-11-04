@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<geometry>
+  <cell id="1" material="void" name="Central Hole (currently Void)" region="-1 -2 3" universe="1"/>
+  <cell id="2" material="5" name="bulkFuel" region="1 -4 -2 3" universe="1"/>
+  <surface coeffs="0.0 0.0 15.0" id="1" type="z-cylinder"/>
+  <surface boundary="vacuum" coeffs="120.81105269716024" id="2" type="z-plane"/>
+  <surface boundary="vacuum" coeffs="-120.81105269716024" id="3" type="z-plane"/>
+  <surface boundary="vacuum" coeffs="0.0 0.0 181.21657904574036" id="4" type="z-cylinder"/>
+</geometry>

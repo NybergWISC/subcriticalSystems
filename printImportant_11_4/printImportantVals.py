@@ -42,6 +42,7 @@ def build_model(ann_height, **model_args):
     # TODO check density math
     hom_density = sum(weights)
     homogenized_mat.set_density('g/cm3', hom_density)
+    print(hom_density)
     # TODO check temperature assumption
     homogenized_mat.temperature = 900
 
@@ -176,6 +177,14 @@ def build_model(ann_height, **model_args):
     totalUMass = totalUO2Mass*avgUmm/(avgUmm+16.0*2)
     print(f"Total Uranium Mass: {totalUMass}")
 
+    avoNum = 6.0221408e23
+    UnumDensity = avoNum*(10.0/(avgUmm+16*2))*0.4
+    OnumDensity = UnumDensity*2
+    PbnumDensity = avoNum*(10/208)*0.5
+    FenumDensity = avoNum*(8/56)*0.1
+
+    print(f"Number Densities: Uranium: {UnumDensity}, Oxygen: {OnumDensity}, Pb-208: {PbnumDensity}, Fe-56: {FenumDensity}")
+
     return myModel
 
 
@@ -183,14 +192,14 @@ startingGuess = 241.62210539432047
 min_height = startingGuess - 20
 max_height = startingGuess + 20
 
-try:
+""" try:
     ann_height, guesses, keffs = openmc.search_for_keff(build_model, target=0.95, bracket=[min_height, max_height], bracketed_method = "brentq", tol=1e-4, print_iterations=True, model_args={"test":"TESTING PRINT"})
     print(f'Annular Height = {ann_height}')
     outerCoreRadius = (ann_height*1.5)/2
     print(f'Outer Core Radius = {outerCoreRadius}')
 except ValueError: 
     print("Some Error Occured, defaulting to 300cm height")
-    ann_height=300
+    ann_height=300 """
 
-# test_model = build_model(ann_height=241.62210539432047)
+test_model = build_model(ann_height=241.62210539432047)
 # openmc.run(test_model)
