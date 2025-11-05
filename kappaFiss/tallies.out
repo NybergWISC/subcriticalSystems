@@ -1,0 +1,40 @@
+ ============================>     TALLY 1     <============================
+
+ Cell 2
+   Total Material
+     Nu-Fission Rate                      34.6054 +/- 0.146067
+     Scattering Rate                      2310.93 +/- 9.76665
+     Total Reaction Rate                  2344.14 +/- 9.90753
+     Fission Rate                         13.866 +/- 0.0586287
+     Absorption Rate                      33.2046 +/- 0.140901
+ ============================>     TALLY 3     <============================
+
+ Surface 1
+   Total Material
+     Current                              0.826099 +/- 0.00061029
+ ============================>     TALLY 4     <============================
+
+ Surface 3
+   Total Material
+     Current                              -0.752306 +/- 0.00362944
+ ============================>     TALLY 5     <============================
+
+ Surface 2
+   Total Material
+     Current                              0.758324 +/- 0.00394813
+ ============================>     TALLY 6     <============================
+
+ Surface 4
+   Total Material
+     Current                              1.06671 +/- 0.00630637
+ ===========================>     TALLY 10     <============================
+
+ Total Material
+   heating                              2.46598e+09 +/- 1.04261e+07
+   Kappa-Fission Rate                   2.69098e+09 +/- 1.13773e+07
+   Fission Rate                         13.866 +/- 0.0586287
+   Absorption Rate                      33.2046 +/- 0.140901
+   Scattering Rate                      2310.93 +/- 9.76665
+   (n,2n)                               0.160772 +/- 0.000495239
+   (n,3n)                               0.0111146 +/- 5.95627e-05
+   Total Reaction Rate                  2344.14 +/- 9.90753

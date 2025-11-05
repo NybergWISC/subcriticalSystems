@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<tallies>
+  <filter id="1" type="cell">
+    <bins>2</bins>
+  </filter>
+  <filter id="2" type="surface">
+    <bins>1</bins>
+  </filter>
+  <filter id="3" type="surface">
+    <bins>3</bins>
+  </filter>
+  <filter id="4" type="surface">
+    <bins>2</bins>
+  </filter>
+  <filter id="5" type="surface">
+    <bins>4</bins>
+  </filter>
+  <tally id="1">
+    <filters>1</filters>
+    <scores>nu-fission scatter total fission absorption</scores>
+  </tally>
+  <tally id="3">
+    <filters>2</filters>
+    <scores>current</scores>
+  </tally>
+  <tally id="4">
+    <filters>3</filters>
+    <scores>current</scores>
+  </tally>
+  <tally id="5">
+    <filters>4</filters>
+    <scores>current</scores>
+  </tally>
+  <tally id="6">
+    <filters>5</filters>
+    <scores>current</scores>
+  </tally>
+  <tally id="10">
+    <scores>heating fission absorption scatter (n,2n) (n,3n) total</scores>
+  </tally>
+</tallies>
